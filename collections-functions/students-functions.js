@@ -88,4 +88,29 @@ function updateBirthOfStudent(birth = new Date('12-02-1998'), name = 'Koren'){
     })
     .catch(() => console.log("No data"));
 }
-updateBirthOfStudent();
+// updateBirthOfStudent();
+
+function getStudentsByOneLetter(letter = 'o'){
+    Student.find({ name: { $regex: `(?i)${letter}` } })
+    .then(students => {
+        console.log('Successfully fetched students');
+        console.log(students);
+    })
+    .catch(() => console.log("No data"));
+}
+// getStudentsByOneLetter();
+
+function getStudentsByLetters(letters = ['h', 'y']){
+    Student.find({
+        $or: [
+            { name: { $regex: `(?i)${letters[0]}` } },
+            { name: { $regex: `(?i)${letters[1]}` } }
+        ]
+    })
+    .then(students => {
+        console.log('Successfully fetched students');
+        console.log(students);
+    })
+    .catch((error) => console.log(error));
+}
+// getStudentsByLetters();
