@@ -78,4 +78,14 @@ function addCourseToStudent(course = 'Javascript', name = 'Yahalom'){
     })
     .catch(() => console.log("No data"));
 }
-addCourseToStudent();
+// addCourseToStudent();
+
+function updateBirthOfStudent(birth = new Date('12-02-1998'), name = 'Koren'){
+    Student.updateMany({ name }, { birth } )
+    .then(() => {
+        console.log('Successfully updated students');
+        getStudentByName(name);
+    })
+    .catch(() => console.log("No data"));
+}
+updateBirthOfStudent();
