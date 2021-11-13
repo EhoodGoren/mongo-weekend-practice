@@ -50,4 +50,23 @@ function getCourseStudentsAndGender(course = 'Java', gender = 'Female'){
 }
 // getCourseStudentsAndGender()
 
-// function getStudentsBornAfter(birth = )
+function getStudentsBornAfter(birth = new Date('05-05-1998')){
+    Student.find({ birth: { $gt: birth } })
+    .then(students => {
+        console.log('Successfully fetched students');
+        console.log(students);
+    })
+    .catch(() => console.log("No data"));
+}
+// getStudentsBornAfter();
+
+function getAreaCodeStudents(code = '054'){
+    Student.find({ phone: {$regex: `^${code}`} })
+    .then(students => {
+        console.log('Successfully fetched students');
+        console.log(students);
+    })
+    .catch(() => console.log("No data"));
+}
+
+getAreaCodeStudents();
