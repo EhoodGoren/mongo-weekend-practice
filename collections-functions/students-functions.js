@@ -103,8 +103,8 @@ function getStudentsByOneLetter(letter = 'o'){
 function getStudentsByLetters(letters = ['h', 'y']){
     Student.find({
         $or: [
-            { name: { $regex: `(?i)${letters[0]}` } },
-            { name: { $regex: `(?i)${letters[1]}` } }
+            { surName: { $regex: `(?i)${letters[0]}` } },
+            { surName: { $regex: `(?i)${letters[1]}` } }
         ]
     })
     .then(students => {
@@ -114,3 +114,21 @@ function getStudentsByLetters(letters = ['h', 'y']){
     .catch((error) => console.log(error));
 }
 // getStudentsByLetters();
+
+function deleteStudentByName(name = 'Ido'){
+    Student.deleteMany({ name })
+    .then(() => {
+        console.log('Successfully deleted students');
+    })
+    .catch(() => console.log("No data"));
+}
+// deleteStudentByName();
+
+function deleteStudentByBirth(birth = new Date('04-02-1998')){
+    Student.deleteMany({ birth })
+    .then(() => {
+        console.log('Successfully deleted students');
+    })
+    .catch(() => console.log("No data"));
+}
+// deleteStudentByBirth();
