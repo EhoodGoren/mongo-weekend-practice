@@ -25,3 +25,29 @@ function getStudentByName(name = 'Ido'){
     .catch(() => console.log("No data"));
 }
 // getStudentByName();
+
+function getCourseStudents(course = 'Law'){
+    Student.find({ courses: { $in: [course] } })
+    .then(students => {
+        console.log('Successfully fetched students');
+        console.log(students);
+    })
+    .catch(() => console.log("No data"));
+}
+
+// getCourseStudents();
+
+function getCourseStudentsAndGender(course = 'Java', gender = 'Female'){
+    Student.find({ 
+        gender,
+        courses: { $in: [course] },
+    })
+    .then(students => {
+        console.log('Successfully fetched students');
+        console.log(students);
+    })
+    .catch(() => console.log("No data"));
+}
+// getCourseStudentsAndGender()
+
+// function getStudentsBornAfter(birth = )
