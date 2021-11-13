@@ -111,7 +111,7 @@ function getStudentsByLetters(letters = ['h', 'y']){
         console.log('Successfully fetched students');
         console.log(students);
     })
-    .catch((error) => console.log(error));
+    .catch(() => console.log("No data"));
 }
 // getStudentsByLetters();
 
