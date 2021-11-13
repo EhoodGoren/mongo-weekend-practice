@@ -68,5 +68,14 @@ function getAreaCodeStudents(code = '054'){
     })
     .catch(() => console.log("No data"));
 }
+// getAreaCodeStudents();
 
-getAreaCodeStudents();
+function addCourseToStudent(course = 'Javascript', name = 'Yahalom'){
+    Student.updateMany({ name, courses: { $nin: [course] } }, { $push: {courses: course } } )
+    .then(() => {
+        console.log('Successfully updated students');
+        getStudentByName(name);
+    })
+    .catch(() => console.log("No data"));
+}
+addCourseToStudent();
